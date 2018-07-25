@@ -1,0 +1,78 @@
+.btn{
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #228;
+}
+.btn.activate{
+    background: #228;
+    color: white;
+}
+
+.emphasize{
+  color: red;
+  font-size: 18px;
+}
+
+.range{
+    width: 80%;
+}
+
+.conns{
+    position: relative;
+}
+
+.one-bar{
+    position: relative;
+    height: 30px;
+    margin: 5px;
+}
+
+.name{
+    display: inline-block;
+    overflow: scroll;
+    width: 150px;
+    white-space: nowrap;
+    font-size: 15px;
+}
+
+.time{
+    position: absolute;
+    top: 0;
+    font-size: 13px;
+    color: red;
+    cursor:pointer;
+}
+.time.start{
+    left: 150px;
+}
+.time.end{
+    right: 0;
+}
+
+.time-bar,
+.traffic-bar{
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    left: 150px;
+    height: 100%;
+    border: 1px solid #bbb;
+    overflow: hidden;
+}
+.time-bar{
+    border: none;
+}
+
+.name{
+    cursor:pointer;    
+}
+.conn{
+    position: absolute;
+    background: #338;
+    border: 1px solid #993;
+    border-right: none;
+    border-radius: 4px;
+    cursor:pointer;
+}

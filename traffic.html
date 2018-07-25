@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+    <title>
+        流量显示
+    </title>
+    <link rel="stylesheet" href="./static/css/traffic.css?v0" >
+</head>
+<body>
+    <div id="traffic-canvas">
+        <select @change="loadFile" v-model="cur_f">
+            <option v-for="f in files">{{f}}</option>
+        </select>
+        <div>
+            <div :class="{btn:true, activate:show_conns}" @click="triggerConns">显示流量</div>
+        </div>
+        <div v-show="show_conns">
+            <div>
+                <label>流量比例:</label>
+                <input class="range" @change = "showBars" v-model = "traffic_range" type="range" name="points" min="1" :max="max_traffic_range" />
+            </div>
+            <div class="conns">
+                <div class="one-bar">
+                    <div class="name" @click="resetTimestamp">时间轴(点击重置)</div>
+                    <div class="time-bar">
+                        <div class="time" :style="data.style" v-for="data in timedata" @click="updateTimestamp(data.ts)">{{data.time}}</div>
+                        <div class="time end">{{end_time}}</div>
+                    </div>
+                </div>
+                <div class="one-bar" v-for="k in ids" v-if="data.data[k]">
+                    <div class="name" :title="id2hint[k]">{{k}}</div>
+                    <div class="traffic-bar">
+                        <div class="conn" :title="conn.hint" :style="conn.style" v-for="conn in data.data[k].conns" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="./static/js/vue.min.js"></script>
+<script src="./static/js/axios.min.js"></script>
+<script src="./static/js/traffic.js?v1"></script>
+</body>
+</html>
